@@ -1,0 +1,59 @@
+name: Publish to NPM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v4
+       with:
+         clean: false
+     - name: Install yarn # https://github.com/actions/setup-node/issues/182
+       run: |-
+         curl -fsSL --create-dirs -o $HOME/bin/yarn \
+         https://github.com/yarnpkg/yarn/releases/download/v1.22.19/yarn-1.22.19.js
+         chmod +x $HOME/bin/yarn
+         echo "$HOME/bin" >> $GITHUB_PATH
+     - name: Use Node.js 20.x
+       uses: actions/setup-node@v4
+       with:
+         node-version: 20.x
+         cache: 'yarn'
+         cache-dependency-path: 'yarn.lock'
+         registry-url: 'https://registry.npmjs.org'
+     - name: Install yarn dependencies
+       run: yarn install --silent --inline-builds --network-timeout 600000
+     - name: Run Tests
+       run: yarn test
+  publish:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          clean: false
+      - name: Install yarn # https://github.com/actions/setup-node/issues/182
+        run: |-
+          curl -fsSL --create-dirs -o $HOME/bin/yarn \
+          https://github.com/yarnpkg/yarn/releases/download/v1.22.19/yarn-1.22.19.js
+          chmod +x $HOME/bin/yarn
+          echo "$HOME/bin" >> $GITHUB_PATH
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install yarn dependencies
+        run: yarn install --silent --inline-builds --network-timeout 600000
+      - name: Build
+        run: yarn tsc
+      - name: Publish to npm
+        run: npm publish --access public  # Adjust access level if necessary
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

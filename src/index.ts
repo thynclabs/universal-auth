@@ -1,0 +1,1 @@
+export { GitHubAuth } from './github';

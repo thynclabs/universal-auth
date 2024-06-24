@@ -1,0 +1,16 @@
+.git
+.github
+examples
+node_modules
+src
+.env
+.env.sample
+.gitignore
+.npmignore
+CHANGELOG.md
+jest.config.js
+README.md
+tsconfig.json
+yarn.lock
+.npmrc
+.idea

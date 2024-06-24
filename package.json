@@ -1,0 +1,39 @@
+{
+  "name": "@thynclabs/universal-auth",
+  "version": "1.0.0",
+  "description": "Universal Auth is a comprehensive authentication package that enables seamless login integration with GitHub, and more. Simplify your user authentication process with a unified, easy-to-use interface.",
+  "main": "./dist/index.js",
+  "repository": "git@github.com:thynclabs/universal-auth.git",
+  "author": "Thync Labs",
+  "license": "MIT",
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/thynclabs/universal-auth/issues"
+  },
+  "homepage": "https://github.com/thynclabs/universal-auth/blob/main/README.md",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "authentication",
+    "oauth",
+    "github",
+    "login",
+    "auth"
+  ],
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.8",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.5.2"
+  },
+  "scripts": {
+    "test": "yarn jest",
+    "build": "yarn tsc"
+  }
+}

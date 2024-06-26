@@ -6,11 +6,13 @@
     "esModuleInterop": true,                /* Enable interoperability between CommonJS and ES Modules */
     "outDir": "./dist",                     /* Output directory for compiled JS files */
     "rootDir": "./src",                     /* Directory containing TypeScript source files */
+    "sourceMap": true
   },
   "include": [
     "src/**/*.ts"                          /* Specify TypeScript files to include */
   ],
   "exclude": [
-    "node_modules"                         /* Specify files to exclude */
+    "node_modules",                         /* Specify files to exclude */
+    "**/*.spec.ts"                          /* Test files */
   ]
 }

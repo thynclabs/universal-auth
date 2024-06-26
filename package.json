@@ -1,8 +1,9 @@
 {
   "name": "@thynclabs/universal-auth",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Universal Auth is a comprehensive authentication package that enables seamless login integration with GitHub, and more. Simplify your user authentication process with a unified, easy-to-use interface.",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:thynclabs/universal-auth.git",
   "author": "Thync Labs",
   "license": "MIT",
